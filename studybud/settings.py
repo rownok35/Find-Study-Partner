@@ -131,6 +131,7 @@ MEDIA_URL = '/images/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'studybud/static'),
 ]
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 MEDIA_ROOT = BASE_DIR / 'static/images'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
