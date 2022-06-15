@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -24,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-k%xib%zv2a+waai+(ca&h54^9t6_*+wk1&lxoh_ji$03_jh&bm'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['studybud27.herokuapp.com','localhost','127.0.0.1']
 
@@ -124,15 +125,15 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
 MEDIA_URL = '/images/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'static'
+    os.path.join(BASE_DIR, 'studybud/static'),
 ]
 
 MEDIA_ROOT = BASE_DIR / 'static/images'
-STATIC_ROOT = BASE_DIR/ 'staticfiles'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -142,3 +143,6 @@ CORS_ALLOW_ALL_ORIGINS = True
 
 AUTH_USER_MODEL = 'base.User'
 
+
+if os.getcwd() == '/app':
+    DEBUG = False
